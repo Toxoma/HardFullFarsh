@@ -1,19 +1,32 @@
 "use strict";
 
-const num = 266219;
-// const a = num.toString();
-// let b = 1;
-let c = Array.from(num.toString(), Number);
+// const arr = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"];
+// const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let result = c.reduce((sum, cur) => {
-   return sum * cur;
-});
-console.log(result);
+let lang = prompt("'ru' или 'en'", 'ru');
 
-// for (let i = 0; i < a.length; i++) {
-//    b *= a[i];
-// }
-// console.log(b);
+// 1ый
+if (lang === "ru") {
+   console.log('"понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"');
+} else {
+   console.log('"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"');
+}
 
-result = result ** 3;
-console.log(result.toString().substr(0, 2));
+// 2ой
+switch (lang) {
+   case "ru":
+      console.log('"понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"');
+      break;
+   case "en":
+      console.log('"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"');
+}
+
+// 3ий
+const mas = {
+   ru: '"понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"',
+   en: '"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"'
+};
+console.log(mas[lang]);
+//_____________________________________________
+let namePerson = prompt('Введите имя!');
+console.log(namePerson === 'Артем' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'студент');

@@ -1,31 +1,62 @@
 "use strict";
 
-let arr = [
-   '122',
-   '223',
-   '224',
-   '125',
-   '426',
-   '127',
-   '428',
-];
-
-for (let i = 0; i < arr.length; i++) {
-   if (arr[i].substr(0, 1) === "2" || arr[i].substr(0, 1) === "4") {
-      console.log(arr[i]);
+let isNumber = function (n) {
+   const a = !isNaN(parseFloat(n)) && isFinite(n) && +n >= 1 && +n <= 100;
+   if (!a) {
+      alert('Введи число!');
    }
+   return a;
+};
+
+function getRandomArbitrary(min = 1, max = 100) {
+   return Math.random() * (max - min) + min;
 }
-//_________________________
-function search(a) {
-   for (let j = a - 1; j > 1; j--) {
-      if (a % j === 0) {
-         return;
+
+function start() {
+
+   function endProg(a) {
+      if (a === true) {
+         start();
       }
    }
-   console.log(a + " : Делители этого числа: 1 и " + a);
+
+   let y = getRandomArbitrary();
+   y = Math.floor(y);
+   console.log(y);
+
+   let n = 3;
+
+   function chislo() {
+      let x;
+      let a = false;
+      do {
+         x = prompt('Угадай число от 1 до 100');
+         if (x === null) {
+            return alert('Игра окончена');
+         }
+         if (n === 1) {
+            a = confirm('Попытки закончились, хотите сыграть еще?')
+            endProg(a);
+            return;
+         }
+      } while (!isNumber(x));
+
+      if (+x > y) {
+         n--;
+         alert("Загаданное число меньше, осталось попыток " + n);
+         chislo();
+      }
+      if (+x < y) {
+         n--;
+         alert("Загаданное число больше, осталось попыток " + n);
+         chislo();
+      }
+      if (+x === y) {
+         a = confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
+         endProg(a);
+      }
+   }
+   chislo();
 }
 
-for (let i = 1; i <= 100; i++) {
-   search(i);
-}
-
+start();

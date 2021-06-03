@@ -10,11 +10,10 @@ let arr = [
    '428',
 ];
 
-for (let i = 0; i < arr.length; i++) {
-   if (arr[i].substr(0, 1) === "2" || arr[i].substr(0, 1) === "4") {
-      console.log(arr[i]);
-   }
-}
+console.log(arr.filter(item=>{
+  return item.substr(0,1)==='4'|| item.substr(0,1)==='2';
+}));
+
 //_________________________
 function search(a) {
    for (let j = a - 1; j > 1; j--) {

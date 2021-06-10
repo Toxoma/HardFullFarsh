@@ -10,16 +10,36 @@
 </head>
 
 <body>
-   <p id="first"></p>
-   <p id='second'></p>
+   <div class="wrapper">
+      <h1 id="color">#008d3b</h1>
+      <button id="change" type="button">New color</button>
+   </div>
 </body>
 
 </html>
 
 <style lang="scss">
-   p {
-      color: red;
-      font-size: 28px;
-      font-weight: bold;
+   .wrapper {
+      background-color: rgb(116, 66, 66);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   h1 {
+      margin-top: 10%;
+      color: #ffffff;
+   }
+
+   button {
+      font-size: 24px;
+      padding: 20px 40px;
+      color: rgb(116, 66, 66);
    }
 </style>

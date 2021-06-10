@@ -1,51 +1,16 @@
 "use strict";
 
-const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+let btn = document.querySelector('#change'),
+   text = document.querySelector('#color'),
+   wrapper = document.querySelector('.wrapper');
 
-setInterval(() => {
+btn.addEventListener('click', () => {
+   let r = Math.floor(Math.random() * (256)),
+      g = Math.floor(Math.random() * (256)),
+      b = Math.floor(Math.random() * (256)),
+      color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+   text.textContent = color;
+   wrapper.style.backgroundColor = color;
+   btn.style.color = color;
 
-   let day = new Intl.DateTimeFormat('ru-RU', { weekday: 'long' }).format(new Date());
-
-   day = day[0].toUpperCase() + day.substr(1);
-
-   let nowTime = new Date();
-
-   let first = document.querySelector('#first');
-
-   function changer(hour) {
-      switch (hour) {
-         case 1, 21:
-            return 'час';
-
-         case 2, 3, 4, 22, 23, 24:
-            return 'часа';
-
-         default:
-            return 'часов';
-      }
-   }
-
-   let text = `a) 'Сегодня ${day}, ${nowTime.getDay()} ${months[nowTime.getMonth()]} ${nowTime.getFullYear()} года, ${nowTime.getHours()} ${changer(nowTime.getHours())} ${nowTime.getMinutes()} минут ${nowTime.getSeconds()} секунды'`;
-
-   first.innerHTML = text;
-
-
-   let second = document.querySelector('#second');
-
-   function addNull(item) {
-      item = item.split('.');
-
-      for (let i in item) {
-         if (item[i].length < 2) {
-            item[i] = '0' + item[i];
-         }
-      }
-      item = item.join(':');
-
-      return item.replace(':', '.').replace(':', '.').replace(':', ' - ');
-   }
-
-   text = `б) '${addNull(nowTime.toLocaleString().replace(', ', '.').replaceAll(':', '.'))}'`;
-
-   second.innerHTML = text;
-}, 1000);
+});
